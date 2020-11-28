@@ -1,5 +1,6 @@
 package io.pragra.learning.jpademo.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
@@ -22,13 +23,14 @@ public class Book {
     @Column(length = 255)
     private String title;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Author> author = new ArrayList<>();
+    @OneToOne
+    private Author author;
 
     private String category;
+
     private double price;
 
-    public Book(Long isbn, String title, List<Author> author, String category, double price) {
+    public Book(Long isbn, String title, Author author, String category, double price) {
         this.isbn = isbn;
         this.title = title;
         this.author = author;

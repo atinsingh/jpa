@@ -11,10 +11,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
-import java.util.Scanner;
 
 @SpringBootApplication
 public class JpademoApplication {
@@ -36,18 +34,20 @@ public class JpademoApplication {
             Author aut2 = new Author("Jean Doe","Abc Corp",null,new Date(), new Date(), StatusEnum.ACTIVE);
             Author aut3 = new Author("Adam","Abc Corp",null,new Date(), new Date(), StatusEnum.ACTIVE);
             Author aut4 = new Author("Harmet","Abc Corp",null,new Date(), new Date(), StatusEnum.ACTIVE);
-//            aut1 = authRepo.save(aut1);
-//            aut2 = authRepo.save(aut2);
-//            aut3 = authRepo.save(aut3);
-//            aut4 = authRepo.save(aut4);
+            Author aut5 = new Author("Ritesh","Edmonton Corp",null,new Date(), new Date(), StatusEnum.ACTIVE);
+            aut1 = authRepo.save(aut1);
+            aut2 = authRepo.save(aut2);
+            aut3 = authRepo.save(aut3);
+            aut4 = authRepo.save(aut4);
+            authRepo.save(aut5);
 
 
-            Book book = new Book(110001122L,"Learning Java", null,"Programing",300);
-            Book book2 = new Book(110001124L,"Learning Angular",null,"Programing",200);
+            Book book = new Book(110001122L,"Learning Java", aut1,"Programing",300);
+            Book book2 = new Book(110001124L,"Learning Angular",aut2,"Programing",200);
             Book save = repo.save(book);
             Book save3 = repo.save(book2);
-            //repo.save(new Book(110001125L,"Learning React",Arrays.asList(aut2),"Programing",100));
-            repo.save(new Book(110001126L,"Learning Cry in Java",null,"Programing",200));
+            repo.save(new Book(110001125L,"Learning React",aut3,"Programing",100));
+            repo.save(new Book(110001126L,"Learning Cry in Java",aut4,"Programing",200));
             List<Book> all = repo.findAll();
             repo.findById(2L).ifPresent(System.out::println);
 
@@ -55,6 +55,8 @@ public class JpademoApplication {
             System.out.println(repo.findByPriceOrderByIsbn(200));
 
             System.out.println(repo.countAll());
+
+            System.out.println(repo.iamFeelingLucky("Adam"));
         };
     }
 
