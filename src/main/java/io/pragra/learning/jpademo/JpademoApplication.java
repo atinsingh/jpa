@@ -2,9 +2,11 @@ package io.pragra.learning.jpademo;
 
 import io.pragra.learning.jpademo.domain.Author;
 import io.pragra.learning.jpademo.domain.Book;
+import io.pragra.learning.jpademo.domain.RefData;
 import io.pragra.learning.jpademo.domain.StatusEnum;
 import io.pragra.learning.jpademo.repo.AuthRepo;
 import io.pragra.learning.jpademo.repo.BookRepo;
+import io.pragra.learning.jpademo.repo.RefDataRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -21,6 +23,9 @@ public class JpademoApplication {
 
     @Autowired
     private AuthRepo authRepo;
+
+    @Autowired
+    private RefDataRepo refDataRepo;
 
     public static void main(String[] args) {
         SpringApplication.run(JpademoApplication.class, args);
@@ -57,6 +62,8 @@ public class JpademoApplication {
             System.out.println(repo.countAll());
 
             System.out.println(repo.iamFeelingLucky("Adam"));
+            refDataRepo.save(new RefData("Apple","Fruit"));
+            refDataRepo.save(new RefData("Oranges","Fruit"));
         };
     }
 
