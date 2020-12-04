@@ -8,6 +8,7 @@ import io.pragra.learning.jpademo.service.BookService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
+import org.springframework.boot.context.properties.bind.DefaultValue;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -27,8 +28,11 @@ public class BookController {
 
     // api/book/
     @GetMapping()
-    public List<Book> getAll() {
-        return service.getAll();
+    public List<Book> getAll(@RequestParam(value = "price", required = false) Double price) {
+        if (price == null) {
+            return service.getAll();
+        }
+        return service.getAllByPrice(price);
     }
 
     @GetMapping("/{id}")

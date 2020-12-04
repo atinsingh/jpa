@@ -17,4 +17,6 @@ public interface BookRepo extends JpaRepository<Book, Long> {
 
     @Query(value = "select a.* from TABLE_BOOK a, TABLE_AUTHORS b WHERE  a.author_id =  b.id AND b.name= :name", nativeQuery = true)
     List<Book> iamFeelingLucky(@Param("name") String name);
+
+    List<Book> findAllByPrice(double price);
 }

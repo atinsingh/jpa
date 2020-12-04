@@ -12,7 +12,3 @@ spring:
       ddl-auto: create-drop
     show-sql: true
 debug: false
-server:
-  servlet:
-    register-default-servlet: true
-

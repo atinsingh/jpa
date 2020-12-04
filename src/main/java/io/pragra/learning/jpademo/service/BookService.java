@@ -37,6 +37,10 @@ public class BookService {
         return repo.findAll();
     }
 
+    public List<Book> getAllByPrice(double p) {
+        return repo.findAllByPrice(p);
+    }
+
     public Book createBook(@RequestBody Book book) {
         Long id = book.getAuthor().getId();
         Optional<Author> author = authRepo.findById(id);
@@ -46,4 +50,5 @@ public class BookService {
         book.setAuthor(author.get());
         return repo.save(book);
     }
+
 }

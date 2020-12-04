@@ -1,0 +1,15 @@
+
+API ?  --- SOAP  & REST
+_______________________________________
+Contract ?  -- Specification of An API
+               What are responses  - Get/Post/Put/Patch/Delete
+               What are the requests --
+               what are the parameters
+               what are querties
+
+
+
+Contract First Approach / Contract Later Approach
+
+________________________________________
+Document First / Document Later
